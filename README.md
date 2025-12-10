@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ops Pilot
+### AI-Powered Incident Intelligence & System Summary
 
-## Getting Started
+Ops Pilot is an AI operations copilot that watches your product health in real time, summarises system state, and tells your team exactly what matters — no dashboards, no noise.
 
-First, run the development server:
+Built for the hackathon:
+- **Wakanda Data Award (Kestra)**
+- **Stormbreaker Deployment Award (Vercel)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What It Does
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Pulls product metrics & error logs from multiple systems  
+  *(analytics, error logs, tickets – demo mode available)*
+- Uses **Kestra’s built-in AI Agent** to:
+  - Summarise system status
+  - Detect incidents
+  - Rank by priority
+  - Recommend actions
+  - Assign to the right team owner
+- Displays everything in a fast, clean Next.js dashboard deployed on **Vercel**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+##  Key Features
 
-To learn more about Next.js, take a look at the following resources:
+| Feature | Details |
+|--------|---------|
+| **AI Summary** | One clear, human-level description of product state |
+| **Decision Intelligence** | AI decides: notify, open issue, ignore |
+| **Priority Detection** | Auto-classifies critical → low impact |
+| **Team Assignment** | Suggests who should handle what |
+| **Demo Mode** | Mock APIs for quick evaluation |
+| **Production-Ready UX** | Vercel deployment, polished UI, fast load |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+##  Architecture
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
