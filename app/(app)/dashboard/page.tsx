@@ -2,6 +2,7 @@ import { SystemHealth } from "@/components/dashboard/summary-panel";
 import { ActiveIncidents } from "@/components/dashboard/incidents-table";
 import { RecommendedActions } from "@/components/dashboard/action-list";
 import { CommandBar } from "@/components/dashboard/command-bar";
+import { StatsCards } from "@/components/dashboard/stats-cards";
 
 export default function Dashboard() {
     return (
@@ -30,6 +31,7 @@ export default function Dashboard() {
 
                 {/* Right Column: Incidents & Actions (Span 5) */}
                 <div className="lg:col-span-5 flex flex-col gap-6">
+                    <StatsCards />
                     <ActiveIncidents />
                     <RecommendedActions />
                 </div>
