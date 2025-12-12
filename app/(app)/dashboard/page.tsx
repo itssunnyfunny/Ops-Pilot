@@ -2,20 +2,19 @@ import { SystemHealth } from "@/components/dashboard/summary-panel";
 import { ActiveIncidents } from "@/components/dashboard/incidents-table";
 import { RecommendedActions } from "@/components/dashboard/action-list";
 import { CommandBar } from "@/components/dashboard/command-bar";
-import { Zap } from "lucide-react";
 
 export default function Dashboard() {
     return (
-        <div className="min-h-screen p-6 md:p-12 max-w-7xl mx-auto flex flex-col justify-center">
-            {/* Header */}
-            <header className="mb-12 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                    <div className="p-2 bg-gradient-to-br from-accent-blue/20 to-accent-blue/5 rounded-xl border border-accent-blue/20">
-                        <Zap className="text-accent-blue fill-accent-blue/20" />
-                    </div>
-                    <h1 className="text-2xl font-bold tracking-tight text-white">
-                        OPS PILOT
-                    </h1>
+        <div className="min-h-screen p-8 max-w-[1600px] mx-auto flex flex-col pt-12">
+            {/* Page Title & User (Optional Top Bar placeholder) */}
+            <header className="mb-8 flex items-center justify-between">
+                <div>
+                    <h2 className="text-3xl font-light text-white tracking-wide">
+                        Dashboard
+                    </h2>
+                    <p className="text-zinc-500 mt-1">
+                        Real-time system overview and AI insights.
+                    </p>
                 </div>
                 <div className="h-10 w-10 rounded-full bg-zinc-800 border border-zinc-700 hover:border-zinc-500 transition-colors cursor-pointer" />
             </header>
