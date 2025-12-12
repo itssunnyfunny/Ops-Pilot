@@ -14,7 +14,7 @@ export function Sidebar() {
     ];
 
     return (
-        <div className="flex h-screen w-64 flex-col justify-between border-r border-white/10 bg-black/40 backdrop-blur-xl p-4 fixed left-0 top-0 z-50">
+        <div className="hidden lg:flex h-screen w-64 flex-col justify-between border-r border-white/10 bg-black/40 backdrop-blur-xl p-4 fixed left-0 top-0 z-50">
             <div>
                 {/* Logo */}
                 <div className="mb-8 flex items-center gap-3 px-2">
