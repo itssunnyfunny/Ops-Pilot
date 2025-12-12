@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 12px;
+  
+  /* Neon Accents */
+  --accent-blue: #00f0ff;
+  --accent-blue-glow: rgba(0, 240, 255, 0.4);
+  --accent-red: #ff2a6d;
+  --accent-red-glow: rgba(255, 42, 109, 0.4);
+  --accent-green: #05ff00;
+  --accent-green-glow: rgba(5, 255, 0, 0.4);
 }
 
 @theme inline {
@@ -10,17 +23,31 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-red: var(--accent-red);
+  --color-accent-green: var(--accent-green);
+  
+  --shadow-neon-blue: 0 0 10px var(--accent-blue-glow), 0 0 20px var(--accent-blue-glow);
+  --shadow-neon-red: 0 0 10px var(--accent-red-glow), 0 0 20px var(--accent-red-glow);
+  --shadow-neon-green: 0 0 10px var(--accent-green-glow), 0 0 20px var(--accent-green-glow);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.08), transparent 25%), 
+    radial-gradient(circle at 85% 30%, rgba(255, 42, 109, 0.08), transparent 25%);
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
 }
