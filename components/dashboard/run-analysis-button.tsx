@@ -3,14 +3,42 @@
 import { Sparkles, Loader2 } from "lucide-react";
 import { useState } from "react";
 
-export function RunAnalysisButton() {
+export function RunAnalysisButton({ onComplete }: { onComplete: (data: any) => void }) {
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
 
-    const handleRun = () => {
-        setIsLoading(true);
-        // Mock delay
-        setTimeout(() => setIsLoading(false), 2000);
-    };
+    const handleRun  = async () => {
+    setIsLoading(true);
+    setError("");
+
+    try {
+      // 1️⃣ Start Kestra flow
+      const startRes = await fetch("/api/run-analysis", {
+        method: "POST"
+      });
+      const { executionId } = await startRes.json();
+
+      // 2️⃣ Poll for result
+      const poll = async () => {
+        const res = await fetch(
+          `/api/analysis-result?executionId=${executionId}`
+        );
+        const data = await res.json();
+
+        if (data.status === "COMPLETED") {
+          onComplete(data.result);
+          setIsLoading(false);
+        } else {
+          setTimeout(poll, 2000);
+        }
+      };
+
+      poll();
+    } catch (e) {
+      setError("Something went wrong");
+      setIsLoading(false);
+    }
+  };
 
     return (
         <button
