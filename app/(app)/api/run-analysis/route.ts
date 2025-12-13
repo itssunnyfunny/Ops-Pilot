@@ -1,18 +1,43 @@
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
-    const { incidentId } = await request.json();
+const KESTRA_URL = process.env.KESTRA_URL!;
+const KESTRA_FLOW_ID = "ops-pilot-analysis";
+const KESTRA_NAMESPACE = "hackathon";
 
-    // Simulate AI Processing
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+export async function POST() {
+  try {
+    const res = await fetch(
+      `${KESTRA_URL}/api/v1/executions`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          namespace: KESTRA_NAMESPACE,
+          flowId: KESTRA_FLOW_ID,
+          inputs: {
+            demoMode: true
+          }
+        })
+      }
+    );
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text);
+    }
+
+    const execution = await res.json();
 
     return NextResponse.json({
-        incidentId,
-        analysis: "Root cause identified: Connection pool exhaustion in primary DB replica.",
-        confidence: 0.89,
-        recommendedActions: [
-            "Increase max_connections parameter",
-            "Restart read-replica-2",
-        ],
+      executionId: execution.id
     });
+  } catch (err: any) {
+    console.error(err);
+    return NextResponse.json(
+      { error: "Failed to start analysis" },
+      { status: 500 }
+    );
+  }
 }
